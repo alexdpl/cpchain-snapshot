@@ -1,0 +1,21 @@
+QWidget#main_window {
+    background: #006bcf;
+}
+
+QTabWidget#content_tabs {
+    border: none;
+    outline: none; 
+    background: #006bcf;
+}
+
+QScrollArea{
+    border: none;
+    outline: none; 
+    background: #fafafa;
+}
+
+QMessageBox{
+    color: #006bcf;
+
+}
+

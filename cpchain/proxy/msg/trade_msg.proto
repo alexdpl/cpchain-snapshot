@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package cpchain;
+
+message Message {
+	enum MessageType {
+		RESERVED = 0;
+		SELLER_DATA = 1;
+		BUYER_DATA = 2;
+		PROXY_REPLY = 3;
+	}
+
+	message Storage {
+		enum StorageType {
+			RESERVED = 0;
+			IPFS = 1;
+			S3 = 2;
+		}
+
+		message IPFS_Storage {
+			string file_hash = 1;
+			string gateway = 2;
+		}
+
+		message S3_Storage {
+			string bucket = 1;
+			string key = 2;
+		}
+
+		StorageType type = 1;
+		IPFS_Storage ipfs = 2;
+		S3_Storage s3 = 3;
+	}
+
+	message SellerData {
+		uint64 order_id = 1;
+		string seller_addr = 2;
+		string buyer_addr = 3;
+		string market_hash = 4;
+		bytes AES_key = 5;
+		Storage storage = 6;
+	}
+
+	message BuyerData{
+		uint64 order_id = 1;
+		string seller_addr = 2;
+		string buyer_addr = 3;
+		string market_hash = 4;
+	}
+
+	message ProxyReply {
+		string error = 1;
+		bytes AES_key = 2;
+		string file_uri = 3;
+	}
+
+	MessageType type = 1;
+	SellerData seller_data = 2;
+	BuyerData buyer_data = 3;
+	ProxyReply proxy_reply = 4;
+}
+
+message SignMessage {
+	string public_key = 1;
+	bytes data = 2;
+	bytes signature = 3;
+}

@@ -1,0 +1,6 @@
+CYBER PHYSICAL CHAIN FOUNDATION LTD.
+
+This is a snapshot of the initial version of PDash.
+/Private keys in this repo are for testing purpose./
+
+Please visit us at [[http://cpchain.io/][cpchain.io]].
